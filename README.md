@@ -10,6 +10,10 @@ Each component provide a unique/primary service
 
 Provides access to database, actions, etc.
 
+### CLI
+
+Provides a basic CLI interface to the REST server in place of using the Front-End GUI
+
 ### Front-End Application 
 
 Provides user with GUI interface to application
