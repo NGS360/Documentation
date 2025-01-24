@@ -18,3 +18,6 @@ Provides a basic CLI interface to the REST server in place of using the Front-En
 
 Provides user with GUI interface to application
 
+### GA4GH WES API to AWS Batch
+
+### GA4GH WES API to AWS Omics
