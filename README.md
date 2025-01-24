@@ -10,6 +10,17 @@ Each component provide a unique/primary service
 
 Provides access to database, actions, etc.
 
+Endpoints:
+  /projects
+  /samples
+  /files
+  /users
+  /user
+  /workflows
+  /analysis
+
+
+
 ### CLI
 
 Provides a basic CLI interface to the REST server in place of using the Front-End GUI
