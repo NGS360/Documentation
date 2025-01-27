@@ -26,6 +26,13 @@ Endpoints:
 Provides a basic CLI interface (ngs or ngs360) to the REST server in place of using the Front-End GUI
 
 ```
+ngs list-projects
+ngs create-project
+ngs describe-project
+ngs delete-project
+ngs modify-project
+ngs find-project
+
 ngs register-workflow <platform> <workflow file> - This returns a NGS360 DB id of the workflow
 ngs run-workflow <workflow id> <input yaml>
 ```
