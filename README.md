@@ -34,7 +34,11 @@ ngs modify-project
 ngs find-project
 
 ngs register-workflow <platform> <workflow file> - This returns a NGS360 DB id of the workflow
-ngs run-workflow <workflow id> <input yaml>
+ngs describe-workflow <workflow-id>
+
+ngs execute-workflow <workflow id> <input yaml> - Return an execution id
+ngs cancel-execution <run-id>
+
 ```
 
 ### Front-End Application 
