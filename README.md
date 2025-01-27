@@ -37,7 +37,7 @@ ngs register-workflow <platform> <workflow file> - This returns a NGS360 DB id o
 ngs describe-workflow <workflow-id>
 
 ngs execute-workflow <workflow id> <input yaml> - Return an execution id
-ngs cancel-execution <run-id>
+ngs cancel-execution <execution-id>
 
 ```
 
