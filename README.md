@@ -23,7 +23,10 @@ Endpoints:
 
 ### CLI
 
-Provides a basic CLI interface to the REST server in place of using the Front-End GUI
+Provides a basic CLI interface (ngs or ngs360) to the REST server in place of using the Front-End GUI
+
+ngs register-workflow <platform> <workflow file> - This returns a NGS360 DB id of the workflow
+ngs run-workflow <workflow id> <input yaml>
 
 ### Front-End Application 
 
