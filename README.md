@@ -9,7 +9,7 @@ Each component provide a unique/primary service
 ### REST Server (and database)
 
 Provides access to database, actions, etc.
-
+```
 Endpoints:
   /projects
   /samples
@@ -18,7 +18,7 @@ Endpoints:
   /user
   /workflows
   /analysis
-
+```
 
 
 ### CLI
