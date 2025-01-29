@@ -48,3 +48,5 @@ Provides user with GUI interface to application
 ### GA4GH WES API to AWS Batch
 
 ### GA4GH WES API to AWS Omics
+
+### GA4GH WES API to Nextflow
