@@ -35,7 +35,6 @@ ngs create-project
 ngs describe-project
 ngs delete-project
 ngs modify-project
-ngs find-project
 
 /samples:
 ngs list-samples
