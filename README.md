@@ -28,18 +28,20 @@ Provides a basic CLI interface (ngs or ngs360) to the REST server in place of us
 
 ```
 /projects:
-ngs list-projects
+ngs list-projects (GET /projects)
+ngs create-project (POST /projects)
 
-/project:
-ngs create-project
-ngs describe-project
-ngs delete-project
-ngs modify-project
+/projects/<project>:
+ngs describe-project (GET /projects/<project>)
+ngs delete-project (DELETE /projects/<project>)
+ngs modify-project (PUT /projects/<project>)
 
 /samples:
-ngs list-samples
-ngs add-samples
-ngs describe-sample
+ngs list-samples (GET /samples)
+ngs add-samples (POST /samples)
+
+/samples/<sample>:
+ngs describe-sample (GET /samples/<sample>)
 
 /files:
 ngs list-files  - List files in a project
@@ -48,19 +50,19 @@ ngs upload-file - Upload file from local location
 ngs copy-file - Copy file from remote-remote
 
 /users:
-ngs list-users
+ngs list-users (GET /users)
 
-/user:
-ngs describe-user
+/users/<user>:
+ngs describe-user (GET /users/<user>)
 
 /workflows:
-ngs list-workflows
+ngs list-workflows (GET /workflows)
+ngs register-workflow (POST /workflows) - This returns a NGS360 DB id of the workflow
 
-/workflow:
-ngs register-workflow <platform> <workflow file> - This returns a NGS360 DB id of the workflow
-ngs describe-workflow <workflow-id>
-ngs execute-workflow <workflow id> <input yaml> - Return an execution id
-ngs cancel-workflow <execution-id>
+/workflows/<workflow>:
+ngs describe-workflow (GET /workflows/<workflow>)
+ngs execute-workflow (POST /workflows/<workflow>) - Return an execution id
+ngs cancel-workflow (DELETE /workflows/<workflow>) 
 
 ```
 
