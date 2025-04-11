@@ -26,7 +26,6 @@ Endpoints:
   /workflow
 ```
 
-
 ### CLI
 
 Provides a basic CLI interface (ngs or ngs360) to the REST server in place of using the Front-End GUI
@@ -41,12 +40,13 @@ ngs describe-project (GET /projects/<project>)
 ngs delete-project (DELETE /projects/<project>)
 ngs modify-project (PUT /projects/<project>)
 
-/samples:
-ngs list-samples (GET /samples)
-ngs add-samples (POST /samples)
+/projects/<project>/samples:
+ngs list-project-samples (GET /projects/<project>/samples)
+ngs add-sample (POST /projects/<project>/samples)
 
-/samples/<sample>:
-ngs describe-sample (GET /samples/<sample>)
+/projects/<project>/samples/<sample>:
+ngs describe-sample (GET /projects/<project>/samples/<sample>)
+ngs modify-sample (PUT /projects/<project>/samples/<sample>)
 
 /files:
 ngs list-files  - List files in a project
