@@ -4,26 +4,37 @@ Goal: Provide an open-source ecosystem to enable NGS data management and analysi
 
 ## Components
 
-We will follow the MVC design pattern.  
+We will follow the MVC design pattern: 
 
 Model: Database Model
-View: Web-App or CLI
-Controller: REST API Server
+View: WebApp or CLI
+Controller: REST API Service
 
-The REST API Server will have exclusive access to the database and all call must go through a REST end-point
-
-### REST Server (and database)
+### REST API Endpoints
 
 ```
-Endpoints:
-  /projects
-  /project
-  /samples
-  /files
-  /users
-  /user
-  /workflows
-  /workflow
+/projects
+  GET: List projects
+  POST: Create a project
+
+/projects/<project>:
+  GET: Describe a project
+  PUT: Modify/Update a project
+  DELETE: Delete a project
+
+/projects/<project>/samples:
+  GET: List project samples
+  POST: Add a sample
+
+/projects/<project>/samples/<sample>:
+  GET: Describe a sample
+  PUT: Modify/Update a sample
+
+/files
+/users
+/user
+/workflows
+/workflow
 ```
 
 ### CLI
@@ -32,13 +43,13 @@ Provides a basic CLI interface (ngs or ngs360) to the REST server in place of us
 
 ```
 /projects:
-ngs list-projects (GET /projects)
-ngs create-project (POST /projects)
+ngs list-projects    (GET /projects)
+ngs create-project   (POST /projects)
 
 /projects/<project>:
 ngs describe-project (GET /projects/<project>)
-ngs delete-project (DELETE /projects/<project>)
-ngs modify-project (PUT /projects/<project>)
+ngs modify-project   (PUT /projects/<project>)
+ngs delete-project   (DELETE /projects/<project>)
 
 /projects/<project>/samples:
 ngs list-project-samples (GET /projects/<project>/samples)
