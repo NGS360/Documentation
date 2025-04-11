@@ -4,11 +4,16 @@ Goal: Provide an open-source ecosystem to enable NGS data management and analysi
 
 ## Components
 
-Each component provide a unique/primary service
+We will follow the MVC design pattern.  
+
+Model: Database Model
+View: Web-App or CLI
+Controller: REST API Server
+
+The REST API Server will have exclusive access to the database and all call must go through a REST end-point
 
 ### REST Server (and database)
 
-Provides access to database, actions, etc.
 ```
 Endpoints:
   /projects
