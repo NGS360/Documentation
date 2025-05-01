@@ -9,61 +9,49 @@ graph TD
     %% Client Layer
     subgraph "Client Layer"
         WebClient[Web Client]
-        MobileClient[Mobile Client]
-        ThirdPartyClient[Third-Party Client]
+        CommandLineClient[CommandLine Client]
     end
 
     %% API Gateway Layer
     subgraph "API Gateway Layer"
-        APIGateway[API Gateway]
-        Authentication[Authentication Service]
-        RateLimit[Rate Limiting]
+        REST API [RestAPI Service]
+        GA4GH WES API [GA4GH WES API Service]
     end
 
     %% Application Layer
     subgraph "Application Layer"
-        ServiceA[Service A]
-        ServiceB[Service B]
-        ServiceC[Service C]
+        RESTAPIWorker[RESTAPIWorker]
+        GA4GHWESDaemon[GA4GHWESDaemon]
     end
 
     %% Data Layer
     subgraph "Data Layer"
         PrimaryDB[(Primary Database)]
-        CacheSystem[(Cache System)]
-        FileStorage[(File Storage)]
+        OpenSearch[(Open Search)]
     end
 
     %% External Services
     subgraph "External Services"
-        PaymentProvider[Payment Provider]
-        EmailService[Email Service]
-        AnalyticsService[Analytics Service]
+        Arvados[Arvados]
+        SevenBridges[SevenBridges]
+        AWSOmics[AWSOmics]
     end
 
     %% Connections
-    WebClient --> APIGateway
-    MobileClient --> APIGateway
-    ThirdPartyClient --> APIGateway
+    WebClient --> REST API
+    CommandLineClient --> REST API
     
-    APIGateway --> Authentication
-    APIGateway --> RateLimit
+    REST API --> RESTAPIWorker
+    GA4GH WES API --> GA4GHWESDaemon
+        
+    REST API --> PrimaryDB
+    GA4GHWESDaemon --> PrimaryDB
+    RESTAPIWorker --> OpenSearch
+
     
-    Authentication --> ServiceA
-    Authentication --> ServiceB
-    Authentication --> ServiceC
-    
-    ServiceA --> PrimaryDB
-    ServiceB --> PrimaryDB
-    ServiceC --> PrimaryDB
-    
-    ServiceA --> CacheSystem
-    ServiceB --> CacheSystem
-    ServiceC --> FileStorage
-    
-    ServiceA --> PaymentProvider
-    ServiceB --> EmailService
-    ServiceC --> AnalyticsService
+    GA4GHWESDaemon --> Arvados
+    GA4GHWESDaemon --> SevenBridges
+    GA4GHWESDaemon --> AWSOmics
 ```
 
 ## Component Details
