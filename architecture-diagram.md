@@ -14,14 +14,14 @@ graph TD
 
     %% API Gateway Layer
     subgraph "API Gateway Layer"
-        REST API [RestAPI Service]
-        GA4GH WES API [GA4GH WES API Service]
+        RESTAPIService[Rest API Service]
+        GA4GHWESAPIService[GA4GH WES API Service]
     end
 
     %% Application Layer
     subgraph "Application Layer"
-        RESTAPIWorker[RESTAPIWorker]
-        GA4GHWESDaemon[GA4GHWESDaemon]
+        RESTAPIWorker[REST API Worker]
+        GA4GHWESDaemon[GA4GH WES Daemon]
     end
 
     %% Data Layer
@@ -34,24 +34,26 @@ graph TD
     subgraph "External Services"
         Arvados[Arvados]
         SevenBridges[SevenBridges]
-        AWSOmics[AWSOmics]
+        AWSOmics[AWS Omics]
     end
 
     %% Connections
-    WebClient --> REST API
-    CommandLineClient --> REST API
-    
-    REST API --> RESTAPIWorker
-    GA4GH WES API --> GA4GHWESDaemon
-        
-    REST API --> PrimaryDB
+    WebClient --> RESTAPIService
+    CommandLineClient --> RESTAPIService
+    WebClient --> GA4GHWESAPIService
+
+    RESTAPIService --> RESTAPIWorker
+    GA4GHWESAPIService --> GA4GHWESDaemon
+
+    RESTAPIService --> PrimaryDB
+    RESTAPIWorker --> PrimaryDB
     GA4GHWESDaemon --> PrimaryDB
     RESTAPIWorker --> OpenSearch
 
-    
     GA4GHWESDaemon --> Arvados
     GA4GHWESDaemon --> SevenBridges
     GA4GHWESDaemon --> AWSOmics
+
 ```
 
 ## Component Details
