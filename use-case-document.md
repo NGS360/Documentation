@@ -4,9 +4,11 @@
 
 NGS360 is an open-source enterprise-scale NGS data and analysis platform.
 
+NGS360 provides a centralized platform for an organization to manage NGS data and run analytical pipelines using their backend engine of choice.
+
+Users can innteract with NGS360 either through the GUI or CLI, both of which uses the underlying REST API.
 Users can create and search for projects, samples, run analytical workflows on samples.
 Users can ingest data from sequencers, vendors, external reposititories.
-NGS360 provides a centralized platform for an organization.
 
 ## Actors
 [List and describe the primary users/roles who will interact with the system]
@@ -94,6 +96,16 @@ NGS360 provides a centralized platform for an organization.
 **Postconditions**:
 - [Condition that must be true when the use case completes successfully]
 - [Another postcondition if applicable]
+
+### Use Case 4: Register & Run a workflow
+
+A user will POST a workflow to /workflow to register the workflow with NGS360.  The POST request will specify what backend engine the workflow is targetted for.  A NGS360 workflow id will be returned to the user.
+
+The user will then POST run requests to /runs using the NGS360 workflow id. 
+
+A backend daemon will submit the run request to the engine on behalf of the user.
+
+This approach will allow all user-engine interactions to go exclusively through NGS360 such that the user will not need to know any details about the underlying engine used.
 
 ## Non-Functional Requirements
 
