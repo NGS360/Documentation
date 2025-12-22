@@ -101,11 +101,34 @@ Users can ingest data from sequencers, vendors, external reposititories.
 
 A user will POST a workflow to /workflow to register the workflow with NGS360.  The POST request will specify what backend engine the workflow is targetted for.  A NGS360 workflow id will be returned to the user.
 
-The user will then POST run requests to /runs using the NGS360 workflow id. 
+The user will then POST run requests to /runs using the NGS360 workflow id.
 
 A backend daemon will submit the run request to the engine on behalf of the user.
 
 This approach will allow all user-engine interactions to go exclusively through NGS360 such that the user will not need to know any details about the underlying engine used.
+
+AWS HealthOmics as an example:
+
+1. User posts a workflow specifying AWS Omics as the engine
+2. NGS360 adds the workflow to Omics, adds the workflow to its database then returns a NGS360 workflow id.
+3. Users can then submit workflow execution via GA4GH WES API using the NGS360 workflow id.
+
+AWS Batch as an example:
+
+1. User posts a workflow specifying AWS Batch as the engine
+2. NGS360 adds the workflow to its database then returns a NGS360 workflow id.
+3. Users can then submit workflow execution via GA4GH WES API using the NGS360 workflow id.
+
+Pros:
+
+1. NGS360 is completely disconnected from Omics hence back-end can change at any time
+2. Every workflow run is loged through NGS360
+3. Users don't need AWS console access
+4. This supports enabling other engines such as AWS Batch where a workflow won't have its own id.
+
+Cons:
+
+1. Added overhead on NGS360 to have daemon supporting Omics, Batch and other engines
 
 ## Non-Functional Requirements
 
