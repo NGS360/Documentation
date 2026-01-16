@@ -37,6 +37,14 @@ graph TD
         AWSOmics[AWS Omics]
     end
 
+    %% AWS Omics
+    subgraph "AWS Omics"
+        AmazonECR[Amazon ECR]
+        OmicsExecutionEngine[Amazon Omics Execution Engine]
+        AmazonEventBridge[Amazon Event Bridge]
+        LambdaRunStatusEvent[AWS Lambda Run Status Event]
+    end
+
     %% Connections
     WebClient --> RESTAPIService
     CommandLineClient --> RESTAPIService
@@ -54,6 +62,11 @@ graph TD
     GA4GHWESDaemon --> SevenBridges
     GA4GHWESDaemon --> AWSOmics
 
+    AWSOmics --> OmicsExecutionEngine
+    AmazonECR --> OmicsExecutionEngine
+    OmicsExecutionEngine --> AmazonEventBridge
+    AmazonEventBridge --> LambdaRunStatusEvent
+    LambdaRunStatusEvent --> RESTAPIService
 ```
 
 ## Component Details
